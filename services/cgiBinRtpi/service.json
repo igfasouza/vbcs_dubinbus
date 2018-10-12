@@ -1,0 +1,135 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Cgi Bin Rtpi",
+        "x-vb": {
+            "dt-wizardType": "rest"
+        },
+        "version": "1.0.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "host": "data.smartdublin.ie",
+    "basePath": "/cgi-bin/rtpi",
+    "definitions": {
+        "Getrealtimebusinformation": {
+            "type": "object",
+            "properties": {
+                "errorcode": {
+                    "type": "string"
+                },
+                "errormessage": {
+                    "type": "string"
+                },
+                "numberofresults": {
+                    "type": "number"
+                },
+                "stopid": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Result"
+                    }
+                }
+            }
+        },
+        "Result": {
+            "type": "object",
+            "properties": {
+                "arrivaldatetime": {
+                    "type": "string"
+                },
+                "duetime": {
+                    "type": "string"
+                },
+                "departuredatetime": {
+                    "type": "string"
+                },
+                "departureduetime": {
+                    "type": "string"
+                },
+                "scheduledarrivaldatetime": {
+                    "type": "string"
+                },
+                "scheduleddeparturedatetime": {
+                    "type": "string"
+                },
+                "destination": {
+                    "type": "string"
+                },
+                "destinationlocalized": {
+                    "type": "string"
+                },
+                "origin": {
+                    "type": "string"
+                },
+                "originlocalized": {
+                    "type": "string"
+                },
+                "direction": {
+                    "type": "string"
+                },
+                "operator": {
+                    "type": "string"
+                },
+                "additionalinformation": {
+                    "type": "string"
+                },
+                "lowfloorstatus": {
+                    "type": "string"
+                },
+                "route": {
+                    "type": "string"
+                },
+                "sourcetimestamp": {
+                    "type": "string"
+                },
+                "monitored": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "paths": {
+        "/realtimebusinformation": {
+            "get": {
+                "operationId": "getRealtimebusinformation",
+                "parameters": [
+                    {
+                        "name": "stopid",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "x-vb-defaultValue": "1071"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "default": {
+                        "examples": {
+                            "application/json": "{\n    \"errorcode\": \"0\",\n    \"errormessage\": \"\",\n    \"numberofresults\": 15,\n    \"stopid\": \"1071\",\n    \"timestamp\": \"11/10/2018 19:38:04\",\n    \"results\": [\n        {\n            \"arrivaldatetime\": \"11/10/2018 19:46:31\",\n            \"duetime\": \"8\",\n            \"departuredatetime\": \"11/10/2018 19:46:31\",\n            \"departureduetime\": \"8\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 19:49:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 19:49:00\",\n            \"destination\": \"Clongriffin\",\n            \"destinationlocalized\": \"Cluain Ghrífín\",\n            \"origin\": \"Ballycullen Rd\",\n            \"originlocalized\": \"Ballycullen Rd\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"15\",\n            \"sourcetimestamp\": \"11/10/2018 19:33:32\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 19:48:24\",\n            \"duetime\": \"10\",\n            \"departuredatetime\": \"11/10/2018 19:48:24\",\n            \"departureduetime\": \"10\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 19:48:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 19:48:00\",\n            \"destination\": \"IKEA\",\n            \"destinationlocalized\": \"IKEA\",\n            \"origin\": \"Palmerston Park\",\n            \"originlocalized\": \"Palmerston Park\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"140\",\n            \"sourcetimestamp\": \"11/10/2018 18:48:58\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 19:50:41\",\n            \"duetime\": \"12\",\n            \"departuredatetime\": \"11/10/2018 19:50:41\",\n            \"departureduetime\": \"12\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 19:45:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 19:45:00\",\n            \"destination\": \"Harristown\",\n            \"destinationlocalized\": \"Baile Anraí\",\n            \"origin\": \"Stannaway Ave\",\n            \"originlocalized\": \"Stannaway Ave\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"83\",\n            \"sourcetimestamp\": \"11/10/2018 19:36:49\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 19:54:40\",\n            \"duetime\": \"16\",\n            \"departuredatetime\": \"11/10/2018 19:54:40\",\n            \"departureduetime\": \"16\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 19:53:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 19:53:00\",\n            \"destination\": \"Beaumont\",\n            \"destinationlocalized\": \"Beaumont\",\n            \"origin\": \"Dundrum\",\n            \"originlocalized\": \"Dundrum\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"14\",\n            \"sourcetimestamp\": \"11/10/2018 19:33:32\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 19:56:46\",\n            \"duetime\": \"18\",\n            \"departuredatetime\": \"11/10/2018 19:56:46\",\n            \"departureduetime\": \"18\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 19:52:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 19:52:00\",\n            \"destination\": \"Poolbeg Street\",\n            \"destinationlocalized\": \"Poolbeg Street\",\n            \"origin\": \"Citywest Rd \",\n            \"originlocalized\": \"Citywest Rd \",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"65B\",\n            \"sourcetimestamp\": \"11/10/2018 19:33:32\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:01:02\",\n            \"duetime\": \"22\",\n            \"departuredatetime\": \"11/10/2018 20:01:02\",\n            \"departureduetime\": \"22\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:01:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:01:00\",\n            \"destination\": \"Harristown\",\n            \"destinationlocalized\": \"Baile Anraí\",\n            \"origin\": \"Stannaway Ave\",\n            \"originlocalized\": \"Stannaway Ave\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"83A\",\n            \"sourcetimestamp\": \"11/10/2018 19:02:10\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:08:24\",\n            \"duetime\": \"30\",\n            \"departuredatetime\": \"11/10/2018 20:08:24\",\n            \"departureduetime\": \"30\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:08:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:08:00\",\n            \"destination\": \"IKEA\",\n            \"destinationlocalized\": \"IKEA\",\n            \"origin\": \"Palmerston Park\",\n            \"originlocalized\": \"Palmerston Park\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"140\",\n            \"sourcetimestamp\": \"11/10/2018 19:08:45\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:12:15\",\n            \"duetime\": \"34\",\n            \"departuredatetime\": \"11/10/2018 20:12:15\",\n            \"departureduetime\": \"34\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:12:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:12:00\",\n            \"destination\": \"Ringsend Road\",\n            \"destinationlocalized\": \"Ringsend Road\",\n            \"origin\": \"Stocking Avenue\",\n            \"originlocalized\": \"Stocking Avenue\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"15B\",\n            \"sourcetimestamp\": \"11/10/2018 19:13:42\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:12:31\",\n            \"duetime\": \"34\",\n            \"departuredatetime\": \"11/10/2018 20:12:31\",\n            \"departureduetime\": \"34\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:13:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:13:00\",\n            \"destination\": \"Beaumont\",\n            \"destinationlocalized\": \"Beaumont\",\n            \"origin\": \"Dundrum\",\n            \"originlocalized\": \"Dundrum\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"14\",\n            \"sourcetimestamp\": \"11/10/2018 19:13:42\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:15:27\",\n            \"duetime\": \"37\",\n            \"departuredatetime\": \"11/10/2018 20:15:27\",\n            \"departureduetime\": \"37\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:15:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:15:00\",\n            \"destination\": \"Harristown\",\n            \"destinationlocalized\": \"Baile Anraí\",\n            \"origin\": \"Stannaway Ave\",\n            \"originlocalized\": \"Stannaway Ave\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"83\",\n            \"sourcetimestamp\": \"11/10/2018 19:17:00\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:18:44\",\n            \"duetime\": \"40\",\n            \"departuredatetime\": \"11/10/2018 20:18:44\",\n            \"departureduetime\": \"40\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:19:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:19:00\",\n            \"destination\": \"Clongriffin\",\n            \"destinationlocalized\": \"Cluain Ghrífín\",\n            \"origin\": \"Ballycullen Rd\",\n            \"originlocalized\": \"Ballycullen Rd\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"15\",\n            \"sourcetimestamp\": \"11/10/2018 19:20:19\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:18:48\",\n            \"duetime\": \"40\",\n            \"departuredatetime\": \"11/10/2018 20:18:48\",\n            \"departureduetime\": \"40\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:19:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:19:00\",\n            \"destination\": \"Ringsend Road\",\n            \"destinationlocalized\": \"Ringsend Road\",\n            \"origin\": \"Limekiln Ave\",\n            \"originlocalized\": \"Limekiln Ave\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"15A\",\n            \"sourcetimestamp\": \"11/10/2018 19:20:19\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:28:24\",\n            \"duetime\": \"50\",\n            \"departuredatetime\": \"11/10/2018 20:28:24\",\n            \"departureduetime\": \"50\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:28:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:28:00\",\n            \"destination\": \"IKEA\",\n            \"destinationlocalized\": \"IKEA\",\n            \"origin\": \"Palmerston Park\",\n            \"originlocalized\": \"Palmerston Park\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"140\",\n            \"sourcetimestamp\": \"11/10/2018 19:28:34\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:32:31\",\n            \"duetime\": \"54\",\n            \"departuredatetime\": \"11/10/2018 20:32:31\",\n            \"departureduetime\": \"54\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:33:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:33:00\",\n            \"destination\": \"Beaumont\",\n            \"destinationlocalized\": \"Beaumont\",\n            \"origin\": \"Dundrum\",\n            \"originlocalized\": \"Dundrum\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"14\",\n            \"sourcetimestamp\": \"11/10/2018 19:33:32\",\n            \"monitored\": \"true\"\n        },\n        {\n            \"arrivaldatetime\": \"11/10/2018 20:35:27\",\n            \"duetime\": \"57\",\n            \"departuredatetime\": \"11/10/2018 20:35:27\",\n            \"departureduetime\": \"57\",\n            \"scheduledarrivaldatetime\": \"11/10/2018 20:35:00\",\n            \"scheduleddeparturedatetime\": \"11/10/2018 20:35:00\",\n            \"destination\": \"Harristown\",\n            \"destinationlocalized\": \"Baile Anraí\",\n            \"origin\": \"Stannaway Ave\",\n            \"originlocalized\": \"Stannaway Ave\",\n            \"direction\": \"Inbound\",\n            \"operator\": \"bac\",\n            \"additionalinformation\": \"\",\n            \"lowfloorstatus\": \"no\",\n            \"route\": \"83\",\n            \"sourcetimestamp\": \"11/10/2018 19:36:49\",\n            \"monitored\": \"true\"\n        }\n    ]\n}"
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/Getrealtimebusinformation"
+                        },
+                        "description": "The content returned by the server."
+                    },
+                    "x-vb": {
+                        "inferred": {
+                            "default": true
+                        }
+                    }
+                },
+                "x-vb-actionHint": "retrieveMany"
+            }
+        }
+    }
+}

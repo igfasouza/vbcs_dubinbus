@@ -1,0 +1,115 @@
+{
+  "pageModelVersion": "18.3.3",
+  "title": "My start page",
+  "description": "The starting page of the flow",
+  "variables": {
+    "stopid": {
+      "type": "string"
+    },
+    "bus": {
+      "type": "object"
+    },
+    "bus0": {
+      "type": "vb/ArrayDataProvider"
+    },
+    "getRealtimebusinformationListServiceDataProvider": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "cgiBinRtpi/getRealtimebusinformation",
+        "idAttribute": "origin",
+        "itemsPath": "results",
+        "responseType": "flow:getRealtimebusinformationResponse"
+      }
+    },
+    "getRealtimebusinformationListServiceDataProvider2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "cgiBinRtpi/getRealtimebusinformation",
+        "idAttribute": "origin",
+        "itemsPath": "results",
+        "responseType": "flow:getRealtimebusinformationResponse2"
+      }
+    }
+  },
+  "types": {},
+  "chains": {
+    "ButtonClickAction": {
+      "description": "",
+      "variables": {
+        "detail": {
+          "required": true,
+          "type": "any",
+          "input": "fromCaller"
+        }
+      },
+      "root": "callRestEndpoint1",
+      "actions": {
+        "callRestEndpoint1": {
+          "module": "vb/action/builtin/restAction",
+          "parameters": {
+            "endpoint": "cgiBinRtpi/getRealtimebusinformation",
+            "uriParams": {
+              "stopid": "{{ $page.variables.stopid }}"
+            }
+          },
+          "outcomes": {
+            "success": "resetVariables1"
+          }
+        },
+        "resetVariables1": {
+          "module": "vb/action/builtin/resetVariablesAction",
+          "parameters": {
+            "variables": [
+              "$page.variables.bus0"
+            ]
+          },
+          "outcomes": {
+            "success": "assignVariables1"
+          }
+        },
+        "assignVariables1": {
+          "module": "vb/action/builtin/assignVariablesAction",
+          "parameters": {
+            "$page.variables.bus0": {
+              "source": {
+                  "data": "{{ $chain.results.callRestEndpoint1.body.results }}"
+                },
+              "reset": "none"
+            }
+          }
+        }
+      }
+    }
+  },
+  "eventListeners": {
+    "ojButton12411692081Click": {
+      "chains": [
+        {
+          "chainId": "ButtonClickAction",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-ext-mobile-page-template": {
+        "path": "vb/components/mobile-page-template/loader"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      }
+    }
+  }
+}

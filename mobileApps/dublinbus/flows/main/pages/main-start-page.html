@@ -1,0 +1,13 @@
+<oj-ext-mobile-page-template id="page-template" page-title="Page Title">
+    <div class="oj-flex">
+        <oj-label id="oj-label-1241169208-1" for="oj-input-text-1241169208-1" class="oj-flex-item">Input Text</oj-label>
+        <oj-input-text id="oj-input-text-1241169208-1" class="oj-flex-item" value="{{ $page.variables.stopid }}"></oj-input-text>
+        <div class="oj-flex-item">
+            <oj-button id="oj-button-1241169208-1" on-click="[[$listeners.ojButton12411692081Click]]">Search</oj-button>
+        </div>
+    </div>
+    <div class="oj-flex">
+        <oj-table summary="Sample Table" scroll-policy="loadMoreOnScroll" id="oj-table-1241169208-1" class="oj-flex-item" data="{{ $page.variables.bus0 }}" columns="[{&quot;headerText&quot;:&quot;route&quot;,&quot;field&quot;:&quot;route&quot;},{&quot;headerText&quot;:&quot;duetime&quot;,&quot;field&quot;:&quot;duetime&quot;}]"></oj-table>
+    </div>
+
+</oj-ext-mobile-page-template>

@@ -1,0 +1,39 @@
+{
+    "flowModelVersion": "18.3.3",
+    "id": "main",
+    "description": "Flow main",
+    "defaultPage": "main-start",
+    "chains": {},
+    "services": {},
+    "types": {
+        "getRealtimebusinformationResponse": {
+            "results": [
+                {
+                    "duetime": "string",
+                    "origin": "string",
+                    "route": "string"
+                }
+            ]
+        },
+        "@decorators.getRealtimebusinformationResponse": {
+            "endpoint": "getRealtimebusinformation",
+            "service": "cgiBinRtpi",
+            "path": "response"
+        },
+        "getRealtimebusinformationResponse2": {
+            "results": [
+                {
+                    "duetime": "string",
+                    "origin": "string",
+                    "route": "string"
+                }
+            ]
+        },
+        "@decorators.getRealtimebusinformationResponse2": {
+            "endpoint": "getRealtimebusinformation",
+            "service": "cgiBinRtpi",
+            "path": "response"
+        }
+      },
+    "variables": {}
+}
